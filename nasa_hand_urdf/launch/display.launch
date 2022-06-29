@@ -1,0 +1,23 @@
+<launch>
+  <arg
+    name="model" />
+  <param
+    name="robot_description"
+    textfile="$(find nasa_hand_urdf)/urdf/nasa_hand_urdf.urdf" />
+  <node
+    name="joint_state_publisher_gui"
+    pkg="joint_state_publisher_gui"
+    type="joint_state_publisher_gui" >
+    <rosparam param="source_list">["/joint_states_command"]</rosparam>
+  </node>
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find nasa_hand_urdf)/urdf.rviz" />
+  <rosparam file="$(find nasa_hand_msgs)/config/nasa_hand_config.yaml" />
+</launch>
