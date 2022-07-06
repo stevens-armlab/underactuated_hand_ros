@@ -14,5 +14,5 @@ Remember to source your catkin workspace for each unique terminal with `source ~
 2. Run `roslaunch hand_rviz display.launch`
 - This will open rviz with the URDF of the hand
 3. Run `rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=9600` to connect rosserial to Teensy
-4. Navigate to underactuated_hand_sim.py location and run `./nasa_hand_script_param.py`
+4. Run `rosrun hand_rviz underactuated_hand_sim.py` 
 After confirming the hand is fully opened, rviz should accurately simulate the joint positions of each finger.
