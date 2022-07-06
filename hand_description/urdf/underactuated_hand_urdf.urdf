@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="hand_description">
+  <link
+    name="base_link_palm">
+    <inertial>
+      <origin
+        xyz="-0.00055762 0.0025414 0.029616"
+        rpy="0 0 0" />
+      <mass
+        value="0.25708" />
+      <inertia
+        ixx="7.458E-05"
+        ixy="1.1865E-07"
+        ixz="5.4297E-08"
+        iyy="7.7907E-05"
+        iyz="1.2345E-07"
+        izz="0.00012736" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/base_link_palm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.3" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/base_link_palm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="finger1_roll_link">
+    <inertial>
+      <origin
+        xyz="0.00014313 -0.014271 -0.0057664"
+        rpy="0 0 0" />
+      <mass
+        value="0.018446" />
+      <inertia
+        ixx="1.6174E-06"
+        ixy="5.4354E-09"
+        ixz="1.014E-07"
+        iyy="1.1621E-06"
+        iyz="6.8814E-08"
+        izz="1.1208E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger1_roll_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7 0.7 0.7 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger1_roll_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="finger1_roll_joint"
+    type="revolute">
+    <origin
+      xyz="-0.028 0.035 0.068"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link_palm" />
+    <child
+      link="finger1_roll_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="finger1_prox_link">
+    <inertial>
+      <origin
+        xyz="0.00018393 0.016237 -0.00090958"
+        rpy="0 0 0" />
+      <mass
+        value="0.012652" />
+      <inertia
+        ixx="2.4154E-06"
+        ixy="-5.8498E-08"
+        ixz="7.1694E-09"
+        iyy="6.8522E-07"
+        iyz="1.0987E-07"
+        izz="2.1181E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger1_prox_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger1_prox_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="finger1_prox_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-0.7854 0 0" />
+    <parent
+      link="finger1_roll_link" />
+    <child
+      link="finger1_prox_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="finger1_dist_link">
+    <inertial>
+      <origin
+        xyz="-0.00029905 0.018376 -0.0012278"
+        rpy="0 0 0" />
+      <mass
+        value="0.013163" />
+      <inertia
+        ixx="1.1183E-06"
+        ixy="5.3426E-09"
+        ixz="3.1377E-10"
+        iyy="7.8383E-07"
+        iyz="1.1248E-08"
+        izz="9.3332E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger1_dist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.3 0.3 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger1_dist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="finger1_dist_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.05 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger1_prox_link" />
+    <child
+      link="finger1_dist_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="finger2_roll_link">
+    <inertial>
+      <origin
+        xyz="0.00014909 -0.014271 0.0057638"
+        rpy="0 0 0" />
+      <mass
+        value="0.018446" />
+      <inertia
+        ixx="1.6174E-06"
+        ixy="5.4353E-09"
+        ixz="-1.014E-07"
+        iyy="1.1621E-06"
+        iyz="-6.8817E-08"
+        izz="1.1208E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger2_roll_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7 0.7 0.7 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger2_roll_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="finger2_roll_joint"
+    type="revolute">
+    <origin
+      xyz="0.028 0.035 0.068"
+      rpy="1.5708 0 2.4435" />
+    <parent
+      link="base_link_palm" />
+    <child
+      link="finger2_roll_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="finger2_prox_link">
+    <inertial>
+      <origin
+        xyz="-0.00014689 0.019465 0.0011631"
+        rpy="0 0 0" />
+      <mass
+        value="0.01395" />
+      <inertia
+        ixx="2.3886E-06"
+        ixy="-5.9238E-08"
+        ixz="-6.8093E-09"
+        iyy="6.8615E-07"
+        iyz="-1.1112E-07"
+        izz="2.1183E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger2_prox_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger2_prox_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="finger2_prox_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0.7854 0 0" />
+    <parent
+      link="finger2_roll_link" />
+    <child
+      link="finger2_prox_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="finger2_dist_link">
+    <inertial>
+      <origin
+        xyz="-0.00029903 0.018376 0.0012279"
+        rpy="0 0 0" />
+      <mass
+        value="0.013163" />
+      <inertia
+        ixx="1.1183E-06"
+        ixy="5.3424E-09"
+        ixz="-3.1446E-10"
+        iyy="7.8384E-07"
+        iyz="-1.1246E-08"
+        izz="9.3333E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger2_dist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.3 0.3 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/finger2_dist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="finger2_dist_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.05 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger2_prox_link" />
+    <child
+      link="finger2_dist_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="thumb_prox_link">
+    <inertial>
+      <origin
+        xyz="-0.00024351 0.01978 -0.00093343"
+        rpy="0 0 0" />
+      <mass
+        value="0.012808" />
+      <inertia
+        ixx="2.562E-06"
+        ixy="-6.3477E-08"
+        ixz="5.3455E-09"
+        iyy="6.4847E-07"
+        iyz="1.176E-07"
+        izz="2.2147E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/thumb_prox_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/thumb_prox_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thumb_prox_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.035 0.066"
+      rpy="0.7854 0 -3.1416" />
+    <parent
+      link="base_link_palm" />
+    <child
+      link="thumb_prox_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="thumb_dist_link">
+    <inertial>
+      <origin
+        xyz="-0.00011938 0.019176 -0.0006828"
+        rpy="0 0 0" />
+      <mass
+        value="0.011666" />
+      <inertia
+        ixx="1.155E-06"
+        ixy="2.3661E-09"
+        ixz="7.5359E-10"
+        iyy="7.2966E-07"
+        iyz="1.4996E-08"
+        izz="9.104E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/thumb_dist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.3 0.3 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hand_description/meshes/thumb_dist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thumb_dist_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.05 0"
+      rpy="0 0 0" />
+    <parent
+      link="thumb_prox_link" />
+    <child
+      link="thumb_dist_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
