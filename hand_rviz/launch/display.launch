@@ -1,0 +1,27 @@
+<launch>
+  <arg
+    name="model" />
+  <param
+    name="robot_description"
+    textfile="$(find hand_description)/urdf/underactuated_hand_urdf.urdf" />
+  <node
+    name="joint_state_publisher_gui"
+    pkg="joint_state_publisher_gui"
+    type="joint_state_publisher_gui" >
+    <rosparam param="source_list">["/joint_states_command"]</rosparam>
+  </node>
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find hand_rviz)/rviz/urdf_config.rviz" />
+  <rosparam file="$(find hand_rviz)/config/pot_ranges.yaml" />
+  <node
+    name="pot_mins"
+    pkg="hand_rviz"
+    type="server.py" />
+</launch>
