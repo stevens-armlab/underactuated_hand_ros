@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="load_nasa_hand_transmissions">
+
+        <transmission name="finger1_roll_joint_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="finger1_roll_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="finger1_roll_joint_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+
+        <transmission name="finger1_prox_joint_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="finger1_prox_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="finger1_prox_joint_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+
+        <transmission name="finger1_dist_joint_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="finger1_dist_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="finger1_dist_joint_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+
+        <transmission name="finger2_roll_joint_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="finger2_roll_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="finger2_roll_joint_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+
+        <transmission name="finger2_prox_joint_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="finger2_prox_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="finger2_prox_joint_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+
+        <transmission name="finger2_dist_joint_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="finger2_dist_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="finger2_dist_joint_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+
+        <transmission name="thumb_prox_joint_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="thumb_prox_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="thumb_prox_joint_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+
+        <transmission name="thumb_dist_joint_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="thumb_dist_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="thumb_dist_joint_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+
+    </xacro:macro>
+
+</robot>

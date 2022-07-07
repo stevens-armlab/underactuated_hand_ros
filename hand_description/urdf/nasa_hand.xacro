@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot name="nasa_hand" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+    <!-- Files to include -->
+    <xacro:include filename="$(find nasa_hand_description)/urdf/nasa_hand_macro.xacro"/>
+    <xacro:include filename="$(find nasa_hand_description)/urdf/nasa_hand_transmission_macro.xacro"/>
+
+    <!-- Load the hand -->
+    <xacro:load_nasa_hand/>
+    <xacro:load_nasa_hand_transmissions/>
+
+    <!-- For gazebo-->
+    <link name="world"/>
+    <joint name="world_to_root" type="fixed">
+        <child link="base_link_palm"/>
+        <parent link="world"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+    </joint>
+
+    <gazebo>
+        <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+            <legacyModeNS>true</legacyModeNS>
+        </plugin>
+    </gazebo>
+
+
+</robot>

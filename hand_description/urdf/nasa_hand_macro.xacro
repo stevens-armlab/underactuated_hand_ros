@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="nasa_hand" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="load_nasa_hand">
+
+    <link name="base_link_palm">
+      <inertial>
+        <origin rpy="0 0 0" xyz="0.00865285769714524 0.00493047192678481 0.0451614947777261"/>
+        <mass value="0.499305632602698"/>
+        <inertia ixx="0.000126122480801284" ixy="-1.48017789797989E-06" ixz="-4.02469541353641E-07" iyy="9.9404253357864E-05" iyz="-5.47823961453219E-07" izz="0.000171465222639854"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/collision/base_link_palm.STL"/>
+        </geometry>
+        <material name="">
+          <color rgba="1 1 1 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/collision/base_link_palm.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <link name="finger1_roll_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="0.000143133125848089 -0.0142705624094889 -0.00576643699859259"/>
+        <mass value="0.0184458193264614"/>
+        <inertia ixx="1.6174196298627E-06" ixy="5.43541155783891E-09" ixz="1.01399771599592E-07" iyy="1.16212413082414E-06" iyz="6.88143048421306E-08" izz="1.12077718349348E-06"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/visual/finger1_roll_link.STL"/>
+        </geometry>
+        <material name="">
+          <color rgba="0.776470588235294 0.756862745098039 0.737254901960784 1"/>
+        </material>
+      </visual>
+ <!--      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/collision/finger1_roll_link.STL"/>
+        </geometry>
+      </collision> -->
+    </link>
+    <joint name="finger1_roll_joint" type="revolute">
+      <origin rpy="1.5708 0 0" xyz="-0.028 0.035 0.068"/>
+      <parent link="base_link_palm"/>
+      <child link="finger1_roll_link"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="1" lower="-0.18" upper="1.39" velocity="10"/>
+      <dynamics damping="0.3"/>
+    </joint>
+    <link name="finger1_prox_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="0.000183930585592646 0.016236821032127 -0.00090958286413095"/>
+        <mass value="0.0126521921561977"/>
+        <inertia ixx="2.41538675112821E-06" ixy="-5.84980874061422E-08" ixz="7.1694187181012E-09" iyy="6.85219933507153E-07" iyz="1.09870709703783E-07" izz="2.11807796252941E-06"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/visual/finger1_prox_link.STL"/>
+        </geometry>
+        <material name="">
+          <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/collision/finger1_prox_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="finger1_prox_joint" type="revolute">
+      <origin rpy="-0.7854 0 0" xyz="0 0 0"/>
+      <parent link="finger1_roll_link"/>
+      <child link="finger1_prox_link"/>
+      <axis xyz="1 0 0"/>
+      <limit effort="1" lower="0" upper="1.57" velocity="10"/>
+      <dynamics damping="0.25"/>
+    </joint>
+    <link name="finger1_dist_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="-0.00029904577673143 0.0183756809721642 -0.00122777978775135"/>
+        <mass value="0.0131629528340626"/>
+        <inertia ixx="1.118345022632E-06" ixy="5.34263887880156E-09" ixz="3.13772398736262E-10" iyy="7.8383072628937E-07" iyz="1.12475737039886E-08" izz="9.33322463976747E-07"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/visual/finger1_dist_link.STL"/>
+        </geometry>
+        <material name="">
+          <color rgba="1 1 1 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/collision/finger1_dist_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="finger1_dist_joint" type="revolute">
+      <origin rpy="0 0 0" xyz="0 0.05 0"/>
+      <parent link="finger1_prox_link"/>
+      <child link="finger1_dist_link"/>
+      <axis xyz="1 0 0"/>
+      <limit effort="1" lower="-0.45" upper="1.12" velocity="10"/>
+      <dynamics damping="0.25"/>
+    </joint>
+    <link name="finger2_roll_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="0.000149085085292603 -0.0142706185113822 0.0057638053040704"/>
+        <mass value="0.0184460931943939"/>
+        <inertia ixx="1.617424973336E-06" ixy="5.43534984101528E-09" ixz="-1.01400067497175E-07" iyy="1.16213750126673E-06" iyz="-6.88173968397899E-08" izz="1.12078989021856E-06"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/visual/finger2_roll_link.STL"/>
+        </geometry>
+        <material name="">
+          <color rgba="1 1 1 1"/>
+        </material>
+      </visual>
+<!--       <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/collision/finger2_roll_link.STL"/>
+        </geometry>
+      </collision> -->
+    </link>
+    <joint name="finger2_roll_joint" type="revolute">
+      <origin rpy="1.5708 0 2.4435" xyz="0.028 0.035 0.068"/>
+      <parent link="base_link_palm"/>
+      <child link="finger2_roll_link"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="1" lower="-0.68" upper="0.89" velocity="10"/>
+      <dynamics damping="0.3"/>
+    </joint>
+    <link name="finger2_prox_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="-0.000146890191319912 0.0194649893526308 0.00116313030943363"/>
+        <mass value="0.0139502621168317"/>
+        <inertia ixx="2.38858984230773E-06" ixy="-5.92380219539666E-08" ixz="-6.80927629099718E-09" iyy="6.8615109814643E-07" iyz="-1.11117444990483E-07" izz="2.11826549762792E-06"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/visual/finger2_prox_link.STL"/>
+        </geometry>
+        <material name="">
+          <color rgba="1 1 1 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/collision/finger2_prox_link.STL"/>
+
+        </geometry>
+      </collision>
+    </link>
+    <joint name="finger2_prox_joint" type="revolute">
+      <origin rpy="0.7854 0 0" xyz="0 0 0"/>
+      <parent link="finger2_roll_link"/>
+      <child link="finger2_prox_link"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="1" lower="0" upper="1.57" velocity="10"/>
+      <dynamics damping="0.25"/>
+    </joint>
+    <link name="finger2_dist_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="-0.00029902989139001 0.0183755215259011 0.00122785744462862"/>
+        <mass value="0.0131632524012251"/>
+        <inertia ixx="1.11834578196477E-06" ixy="5.34243934517413E-09" ixz="-3.14457107138791E-10" iyy="7.83838373084705E-07" iyz="-1.12461845336818E-08" izz="9.33330275766271E-07"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/visual/finger2_dist_link.STL"/>
+        </geometry>
+        <material name="">
+          <color rgba="1 1 1 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/collision/finger2_dist_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="finger2_dist_joint" type="revolute">
+      <origin rpy="0 0 0" xyz="0 0.05 0"/>
+      <parent link="finger2_prox_link"/>
+      <child link="finger2_dist_link"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="1" lower="-0.44" upper="1.13" velocity="10"/>
+      <dynamics damping="0.25"/>
+    </joint>
+    <link name="thumb_prox_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="-0.000243513998972055 0.0197803085934107 -0.000933426253136149"/>
+        <mass value="0.0128081040633616"/>
+        <inertia ixx="2.5620038672053E-06" ixy="-6.34773649187627E-08" ixz="5.34546446765186E-09" iyy="6.48474054513903E-07" iyz="1.17603267094615E-07" izz="2.21473360972594E-06"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/visual/thumb_prox_link.STL"/>
+        </geometry>
+        <material name="">
+          <color rgba="1 1 1 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/collision/thumb_prox_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="thumb_prox_joint" type="revolute">
+      <origin rpy="0.7854 0 -3.1416" xyz="0 -0.035 0.066"/>
+      <parent link="base_link_palm"/>
+      <child link="thumb_prox_link"/>
+      <axis xyz="1 0 0"/>
+      <limit effort="1" lower="-0.646" upper="0.925" velocity="10"/>
+      <dynamics damping="0.25"/>
+    </joint>
+    <link name="thumb_dist_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="-0.000119377671795196 0.0191756323577654 -0.000682798029542867"/>
+        <mass value="0.0116664659308254"/>
+        <inertia ixx="1.15497856572818E-06" ixy="2.36613598776028E-09" ixz="7.53590665762177E-10" iyy="7.29660960580957E-07" iyz="1.49964976814265E-08" izz="9.10395059572491E-07"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/visual/thumb_dist_link.STL"/>
+        </geometry>
+        <material name="">
+          <color rgba="1 1 1 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://nasa_hand_description/meshes/collision/thumb_dist_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="thumb_dist_joint" type="revolute">
+      <origin rpy="0 0 0" xyz="0 0.05 0"/>
+      <parent link="thumb_prox_link"/>
+      <child link="thumb_dist_link"/>
+      <axis xyz="1 0 0"/>
+      <limit effort="1" lower="-0.33" upper="1.24" velocity="10"/>
+      <dynamics damping="0.25"/>
+    </joint>
+
+    <gazebo reference="finger1_prox_link">
+      <material>Gazebo/Blue</material>  
+      <kp>10000.0</kp>
+      <kd>1.0</kd>
+      <mu1>1000.0</mu1>
+      <mu2>1000.0</mu2>
+      <minDepth>0.001</minDepth> 
+      <maxVel>1.0</maxVel>   
+      <collision name="finger1_prox_link_collision">
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>0.456</coefficient>
+              <use_patch_radius>true</use_patch_radius>
+              <patch_radius>0.05</patch_radius>
+            </torsional>
+          </friction>
+        </surface>
+      </collision> 
+    </gazebo>
+
+    <gazebo reference="finger1_dist_link">
+      <material>Gazebo/Blue</material>  
+      <kp>10000.0</kp>
+      <kd>1.0</kd>
+      <mu1>1000.0</mu1>
+      <mu2>1000.0</mu2>
+      <minDepth>0.001</minDepth>  
+      <maxVel>1.0</maxVel>
+      <collision name="finger1_dist_link_collision">
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>0.456</coefficient>
+              <use_patch_radius>true</use_patch_radius>
+              <patch_radius>0.05</patch_radius>
+            </torsional>
+          </friction>
+        </surface>
+      </collision> 
+    </gazebo>
+
+    <gazebo reference="finger2_prox_link">
+      <material>Gazebo/Blue</material>  
+      <kp>10000.0</kp>
+      <kd>1.0</kd>
+      <mu1>1000.0</mu1>
+      <mu2>1000.0</mu2>
+      <minDepth>0.001</minDepth>  
+      <maxVel>1.0</maxVel>
+      <collision name="finger2_prox_link_collision">
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>0.456</coefficient>
+              <use_patch_radius>true</use_patch_radius>
+              <patch_radius>0.05</patch_radius>
+            </torsional>
+          </friction>
+        </surface>
+      </collision> 
+    </gazebo>
+
+    <gazebo reference="finger2_dist_link">
+      <material>Gazebo/Blue</material>  
+      <kp>10000.0</kp>
+      <kd>1.0</kd>
+      <mu1>1000.0</mu1>
+      <mu2>1000.0</mu2>
+      <minDepth>0.001</minDepth> 
+      <maxVel>1.0</maxVel>    
+      <collision name="finger2_dist_link_collision">
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>0.456</coefficient>
+              <use_patch_radius>true</use_patch_radius>
+              <patch_radius>0.05</patch_radius>
+            </torsional>
+          </friction>
+        </surface>
+      </collision> 
+    </gazebo>
+
+    <gazebo reference="thumb_prox_link">
+      <material>Gazebo/Blue</material>  
+      <kp>10000.0</kp>
+      <kd>1.0</kd>
+      <mu1>1000.0</mu1>
+      <mu2>1000.0</mu2>
+      <minDepth>0.001</minDepth> 
+      <maxVel>1.0</maxVel>   
+      <collision name="thumb_prox_link_collision">
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>0.456</coefficient>
+              <use_patch_radius>true</use_patch_radius>
+              <patch_radius>0.05</patch_radius>
+            </torsional>
+          </friction>
+        </surface>
+      </collision>   
+    </gazebo>
+
+    <gazebo reference="thumb_dist_link">
+      <material>Gazebo/Blue</material>  
+      <kp>10000.0</kp>
+      <kd>1.0</kd>
+      <mu1>1000.0</mu1>
+      <mu2>1000.0</mu2>
+      <minDepth>0.001</minDepth>  
+      <maxVel>1.0</maxVel>  
+      <collision name="thumb_dist_link_collision">
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>0.456</coefficient>
+              <use_patch_radius>true</use_patch_radius>
+              <patch_radius>0.05</patch_radius>
+            </torsional>
+          </friction>
+        </surface>
+      </collision>    
+    </gazebo>
+
+
+    <gazebo reference="finger1_roll_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    </gazebo>
+    <gazebo reference="finger1_prox_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    </gazebo>
+    <gazebo reference="finger1_dist_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    </gazebo>
+    <gazebo reference="finger2_roll_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    </gazebo>
+    <gazebo reference="finger2_prox_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    </gazebo>
+    <gazebo reference="finger2_dist_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    </gazebo>
+    <gazebo reference="thumb_prox_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    </gazebo>
+    <gazebo reference="thumb_dist_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    </gazebo>
+
+
+  
+  </xacro:macro>
+
+</robot>
