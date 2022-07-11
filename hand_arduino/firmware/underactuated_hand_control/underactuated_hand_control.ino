@@ -131,7 +131,7 @@ void loop() {
   pd_msg.pot4 = myPot4.get();
   pd_msg.pot5 = myPot5.get();
   if (roll != 0) {
-    pd_msg.roll0 = roll;
+    pd_msg.roll = roll;
   }
   else {
   }
