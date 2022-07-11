@@ -46,7 +46,7 @@ def joint_message():
     #Once roll angle is accessed:
     #message.position = [pot6, pot0, pot1, pot7, pot2, -pot3, pot4, pot5] Must match order of message.name
     #Some have negative signs to account for the sensors reversing in the finger:
-    message.position = [roll0, pot0, pot1, -roll0, pot2, -pot3, pot4, pot5]
+    message.position = [roll, pot0, pot1, -roll, pot2, -pot3, pot4, pot5]
     message.name = ["finger1_roll_joint", "finger1_prox_joint", "finger1_dist_joint", "finger2_roll_joint", "finger2_prox_joint", "finger2_dist_joint", "thumb_prox_joint", "thumb_dist_joint"]
 
     joint_state_pub = rospy.Publisher('joint_states_command', JointState, queue_size=1)
@@ -59,7 +59,7 @@ pot_ranges = rospy.get_param('/pot_ranges')
 
 def callback(data):
     #Initialize variables:
-    global pot0, pot1, pot2, pot3, pot4, pot5, roll0
+    global pot0, pot1, pot2, pot3, pot4, pot5, roll
 
     #Capture initial position of potentiometers and save as minimum values:
     global count
@@ -79,8 +79,8 @@ def callback(data):
     #Range to normalize data to: [a, b]
     a = 0
     b = 1.57
-    c = -1.3
-    d = 0.3
+    roll_min = 556
+    roll_range = 500
 
     #To scale variable x into range [a, b]: x_scaled = (b-a)((x-min(x))/(max(x)-min(x))+a
     pot0 = -b*((data.pot0 - pot_mins['pot0'])/(pot_ranges['pot0']))
@@ -89,7 +89,7 @@ def callback(data):
     pot3 = -b*((data.pot3 - pot_mins['pot3'])/(pot_ranges['pot3']))
     pot4 = -b*((data.pot4 - pot_mins['pot4'])/(pot_ranges['pot4']))
     pot5 = -b*((data.pot5 - pot_mins['pot5'])/(pot_ranges['pot5']))
-    roll0 = (d-c)*((data.roll0-200)/(500))+c
+    roll = -b*((data.roll-roll_min)/(roll_range))
 
     pot_vals = [pot0, pot1, pot2, pot3, pot4, pot5]
     print("Sensor values:")
@@ -97,7 +97,7 @@ def callback(data):
         print("Pot " + str(x) + ":" ),
         print(pot_vals[x])
     print("Roll:"),
-    print(data.roll0)
+    print(data.roll)
     print("")
 
     #Execute joint_message function above
