@@ -1,6 +1,6 @@
 import rospy
 from std_msgs.msg import Float64, Int8, Bool
-from hand.msg import grasp
+from hand_arduino.msg import grasp
 
 class hand_driver:
     def __init__(self):

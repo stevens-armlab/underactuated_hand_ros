@@ -1,11 +1,11 @@
 #include <Dynamixel2Arduino.h>
 #include <ros.h>
 #include <sensor_msgs/Joy.h>
-#include <hand/pos_ctrl_1.h>
+#include <hand_arduino/pos_ctrl_1.h>
 #include <std_msgs/Float64.h>
 #include <std_msgs/Int8.h>
 #include <std_msgs/Bool.h>
-#include <hand/grasp.h>
+#include <hand_arduino/grasp.h>
 
 using namespace ControlTableItem;
 
@@ -71,7 +71,7 @@ float averaged = 0;
 // ************************************************************************************** //
 
 void hand_grasp_set_position_cb(const std_msgs::Float64& data);
-void hand_grasp_start_grasp_cb(const hand::grasp& data);
+void hand_grasp_start_grasp_cb(const hand_arduino::grasp& data);
 void hand_grasp_stop_cb(const std_msgs::Bool& data);
 void enable_pos_ctrl();
 void enable_voltage_ctrl();
@@ -95,7 +95,7 @@ std_msgs::Float64 grasp_position_msg;
 std_msgs::Float64 spread_position_msg;
 
 ros::Subscriber<std_msgs::Float64> grasp_set_pos_sub("hand/grasp/set_position", &hand_grasp_set_position_cb);
-ros::Subscriber<hand::grasp> start_grasp_sub("hand/grasp/start_grasp", &hand_grasp_start_grasp_cb);
+ros::Subscriber<hand_arduino::grasp> start_grasp_sub("hand/grasp/start_grasp", &hand_grasp_start_grasp_cb);
 ros::Subscriber<std_msgs::Bool> stop_grasp_sub("hand/grasp/stop", &hand_grasp_stop_cb);
 
 ros::Subscriber<std_msgs::Float64> spread_set_pos_sub("hand/spread/set_position", &hand_spread_set_position_cb);
@@ -185,7 +185,7 @@ void hand_grasp_set_position_cb(const std_msgs::Float64& data) {
   grasp_state = not_grasping;
 }
 
-void hand_grasp_start_grasp_cb(const hand::grasp& data) {
+void hand_grasp_start_grasp_cb(const hand_arduino::grasp& data) {
   grasp_state = grasping;
   grasp_speed = data.speed;
   grasp_force_threshold = data.force_threshold;

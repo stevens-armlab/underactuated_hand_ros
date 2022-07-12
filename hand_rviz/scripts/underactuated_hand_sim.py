@@ -43,9 +43,7 @@ client = dynamic_reconfigure.client.Client('pot_mins')
 
 def joint_message():
     message = JointState()
-    #Once roll angle is accessed:
-    #message.position = [pot6, pot0, pot1, pot7, pot2, -pot3, pot4, pot5] Must match order of message.name
-    #Some have negative signs to account for the sensors reversing in the finger:
+    #Must match order of message.name:
     message.position = [roll, pot0, pot1, roll, pot2, pot3, pot4, pot5]
     message.name = ["finger1_roll_joint", "finger1_prox_joint", "finger1_dist_joint", "finger2_roll_joint", "finger2_prox_joint", "finger2_dist_joint", "thumb_prox_joint", "thumb_dist_joint"]
 
