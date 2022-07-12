@@ -46,7 +46,7 @@ def joint_message():
     #Once roll angle is accessed:
     #message.position = [pot6, pot0, pot1, pot7, pot2, -pot3, pot4, pot5] Must match order of message.name
     #Some have negative signs to account for the sensors reversing in the finger:
-    message.position = [roll, pot0, pot1, -roll, pot2, -pot3, pot4, pot5]
+    message.position = [roll, pot0, pot1, roll, pot2, pot3, pot4, pot5]
     message.name = ["finger1_roll_joint", "finger1_prox_joint", "finger1_dist_joint", "finger2_roll_joint", "finger2_prox_joint", "finger2_dist_joint", "thumb_prox_joint", "thumb_dist_joint"]
 
     joint_state_pub = rospy.Publisher('joint_states_command', JointState, queue_size=1)
@@ -79,16 +79,16 @@ def callback(data):
     #Range to normalize data to: [a, b]
     a = 0
     b = 1.57
-    roll_min = 556
-    roll_range = 500
+    roll_min = 525
+    roll_range = 475
 
     #To scale variable x into range [a, b]: x_scaled = (b-a)((x-min(x))/(max(x)-min(x))+a
-    pot0 = -b*((data.pot0 - pot_mins['pot0'])/(pot_ranges['pot0']))
-    pot1 = -b*((data.pot1 - pot_mins['pot1'])/(pot_ranges['pot1']))
-    pot2 = -b*((data.pot2 - pot_mins['pot2'])/(pot_ranges['pot2']))
-    pot3 = -b*((data.pot3 - pot_mins['pot3'])/(pot_ranges['pot3']))
-    pot4 = -b*((data.pot4 - pot_mins['pot4'])/(pot_ranges['pot4']))
-    pot5 = -b*((data.pot5 - pot_mins['pot5'])/(pot_ranges['pot5']))
+    pot0 = b*((data.pot0 - pot_mins['pot0'])/(pot_ranges['pot0']))
+    pot1 = b*((data.pot1 - pot_mins['pot1'])/(pot_ranges['pot1']))
+    pot2 = b*((data.pot2 - pot_mins['pot2'])/(pot_ranges['pot2']))
+    pot3 = b*((data.pot3 - pot_mins['pot3'])/(pot_ranges['pot3']))
+    pot4 = b*((data.pot4 - pot_mins['pot4'])/(pot_ranges['pot4']))
+    pot5 = b*((data.pot5 - pot_mins['pot5'])/(pot_ranges['pot5']))
     roll = -b*((data.roll-roll_min)/(roll_range))
 
     pot_vals = [pot0, pot1, pot2, pot3, pot4, pot5]

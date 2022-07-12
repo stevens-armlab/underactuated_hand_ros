@@ -31,7 +31,7 @@
       <material
         name="">
         <color
-          rgba="1 1 1 0.3" />
+          rgba="0.980 0.8 0 .3" />
       </material>
     </visual>
     <collision>
@@ -71,7 +71,7 @@
       <material
         name="">
         <color
-          rgba="0.7 0.7 0.7 1" />
+          rgba="0.25 0.25 0.25 1" />
       </material>
     </visual>
     <collision>
@@ -95,9 +95,9 @@
     <child
       link="finger1_roll_link" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
     <limit
-      lower="-1.57"
+      lower="0"
       upper="1.57"
       effort="0"
       velocity="0" />
@@ -129,7 +129,7 @@
       <material
         name="">
         <color
-          rgba="1 1 1 1" />
+          rgba="0.980 0.8 0.0 1" />
       </material>
     </visual>
     <collision>
@@ -153,9 +153,9 @@
     <child
       link="finger1_prox_link" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <limit
-      lower="-1.57"
+      lower="0"
       upper="1.57"
       effort="0"
       velocity="0" />
@@ -187,7 +187,7 @@
       <material
         name="">
         <color
-          rgba="0.3 0.3 0.3 1" />
+          rgba="0.25 0.25 0.25 1" />
       </material>
     </visual>
     <collision>
@@ -211,9 +211,9 @@
     <child
       link="finger1_dist_link" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <limit
-      lower="-1.57"
+      lower="0"
       upper="1.57"
       effort="0"
       velocity="0" />
@@ -245,7 +245,7 @@
       <material
         name="">
         <color
-          rgba="0.7 0.7 0.7 1" />
+          rgba="0.25 0.25 0.25 1" />
       </material>
     </visual>
     <collision>
@@ -263,7 +263,7 @@
     type="revolute">
     <origin
       xyz="0.028 0.035 0.068"
-      rpy="1.5708 0 2.4435" />
+      rpy="1.5708 0 3.142" />
     <parent
       link="base_link_palm" />
     <child
@@ -271,7 +271,7 @@
     <axis
       xyz="0 -1 0" />
     <limit
-      lower="-1.57"
+      lower="0"
       upper="1.57"
       effort="0"
       velocity="0" />
@@ -303,7 +303,7 @@
       <material
         name="">
         <color
-          rgba="1 1 1 1" />
+          rgba="0.980 0.8 0.0 1" />
       </material>
     </visual>
     <collision>
@@ -327,9 +327,9 @@
     <child
       link="finger2_prox_link" />
     <axis
-      xyz="1 0 0" />
+      xyz="-1 0 0" />
     <limit
-      lower="-1.57"
+      lower="0"
       upper="1.57"
       effort="0"
       velocity="0" />
@@ -361,12 +361,11 @@
       <material
         name="">
         <color
-          rgba="0.3 0.3 0.3 1" />
+          rgba="0.25 0.25 0.25 1" />
       </material>
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
@@ -387,7 +386,7 @@
     <axis
       xyz="-1 0 0" />
     <limit
-      lower="-1.57"
+      lower="0"
       upper="1.57"
       effort="0"
       velocity="0" />
@@ -419,7 +418,7 @@
       <material
         name="">
         <color
-          rgba="1 1 1 1" />
+          rgba="0.980 0.8 0.0 1" />
       </material>
     </visual>
     <collision>
@@ -443,9 +442,9 @@
     <child
       link="thumb_prox_link" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <limit
-      lower="-1.57"
+      lower="0"
       upper="1.57"
       effort="0"
       velocity="0" />
@@ -477,7 +476,7 @@
       <material
         name="">
         <color
-          rgba="0.3 0.3 0.3 1" />
+          rgba="0.25 0.25 0.25 1" />
       </material>
     </visual>
     <collision>
@@ -501,9 +500,9 @@
     <child
       link="thumb_dist_link" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <limit
-      lower="-1.57"
+      lower="0"
       upper="1.57"
       effort="0"
       velocity="0" />
