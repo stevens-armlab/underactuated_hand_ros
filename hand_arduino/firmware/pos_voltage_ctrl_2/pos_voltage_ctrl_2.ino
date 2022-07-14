@@ -13,17 +13,17 @@ ros::NodeHandle nh;
 
 float temp_ave = 0.0;
 float load_pre = 0.0;
-const float pos_init_1 = 1154.0;
-const float pos_init_2 = 509.0;
+const float pos_init_1 = 2250.0;
+const float pos_init_2 = 563.0;
 
 bool pos_ctrl = true;
 
 float grasp_speed = 20;
 float grasp_force_threshold = 90;
 float grasp_force = 30;
-float grasp_pos_max = 4080.0;
-float spread_pos_max = 539.0; // parallel
-float spread_pos_min = 262.0; // triangle
+float grasp_pos_max = 4500.0;
+float spread_pos_max = 563.0; // parallel
+float spread_pos_min = 269.0; // triangle
 
 enum grasp_state_enum
 {
@@ -205,7 +205,7 @@ void enable_pos_ctrl() {
   if (!pos_ctrl)
   {
     dxl_1.torqueOff(DXL_ID_1);
-    dxl_1.setOperatingMode(DXL_ID_1, OP_POSITION);
+    dxl_1.setOperatingMode(DXL_ID_1, OP_EXTENDED_POSITION);
     dxl_1.torqueOn(DXL_ID_1);
     pos_ctrl = true;
   }
@@ -339,11 +339,11 @@ void motor_setup() {
 
   // Turn off torque when configuring items in EEPROM area
   dxl_1.torqueOff(DXL_ID_1);
-  dxl_1.setOperatingMode(DXL_ID_1, OP_POSITION);
+  dxl_1.setOperatingMode(DXL_ID_1, OP_EXTENDED_POSITION);
   dxl_1.torqueOn(DXL_ID_1);
 
   dxl_2.torqueOff(DXL_ID_2);
-  dxl_2.setOperatingMode(DXL_ID_2, OP_POSITION);
+  dxl_2.setOperatingMode(DXL_ID_2, OP_EXTENDED_POSITION);
   dxl_2.torqueOn(DXL_ID_2);
 }
 

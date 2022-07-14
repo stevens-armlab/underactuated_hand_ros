@@ -1,0 +1,32 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/robot-hand/underactuated_ws/devel/include/**",
+        "/home/robot-hand/devel/ur_haptic_teleop_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/robot-hand/catkin_ws/devel/include/**",
+        "/home/robot-hand/devel/ur_haptic_teleop_ws/src/cisst-saw/cisstNetlib/include/**",
+        "/home/robot-hand/devel/ur_haptic_teleop_ws/src/cisst-saw/cisst-ros/cisst_ros_bridge/include/**",
+        "/home/robot-hand/devel/ur_haptic_teleop_ws/src/cisst-saw/cisst-ros/cisst_ros_crtk/include/**",
+        "/home/robot-hand/catkin_ws/src/nasa_hand_msgs/include/**",
+        "/home/robot-hand/underactuated_ws/src/underactuated_hand_ros/rosserial/rosserial_server/include/**",
+        "/home/robot-hand/underactuated_ws/src/underactuated_hand_ros/rosserial/rosserial_test/include/**",
+        "/home/robot-hand/devel/ur_haptic_teleop_ws/src/cisst-saw/sawSensablePhantom/components/include/**",
+        "/home/robot-hand/devel/ur_haptic_teleop_ws/src/ur_haptic_teleop/include/**",
+        "/home/robot-hand/devel/ur_haptic_teleop_ws/src/fmauch_universal_robot/ur_kinematics/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

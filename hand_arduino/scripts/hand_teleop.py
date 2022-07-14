@@ -10,9 +10,9 @@ hand = hand_driver()
 def joy_cb(data):
     global hand
     if data.buttons[5]:
-        hand.grasp(speed=40)
+        hand.grasp(speed=40, pos_max=5000)
     elif data.buttons[4]:
-        hand.ungrasp()
+        hand.ungrasp(position = 2250)
     else:
         hand.stop_grasp()
 

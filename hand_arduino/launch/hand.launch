@@ -2,7 +2,7 @@
 <launch>
 
   <!--   starting the joy_node -->
-<!--    <node name="joy_node" pkg="joy" type="joy_node" output="log" respawn="false"/>-->
+   <node name="joy_node" pkg="joy" type="joy_node" output="log" respawn="false"/>
 
   <!-- starting the hand/gripper -->
     <node name="hand_serial_com" pkg="rosserial_python" type="serial_node.py">

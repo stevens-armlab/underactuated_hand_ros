@@ -22,7 +22,7 @@ class hand_driver:
         self.unspread_pos = 708.0
 
 # Functions for grasping
-    def grasp(self, speed=20, force=30, force_threshold=90, pos_max=3080):
+    def grasp(self, speed=20, force=30, force_threshold=90, pos_max=4800):
         grasp_msg = grasp(speed=speed, force=force, force_threshold=force_threshold, pos_max=pos_max)
         self.start_grasp_pub.publish(grasp_msg)
 
