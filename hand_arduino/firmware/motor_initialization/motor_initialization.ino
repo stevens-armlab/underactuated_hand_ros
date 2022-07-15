@@ -34,8 +34,8 @@ void loop() {
   if(newData == true){
     switch(input){
       case 'i':
-        dxl_1.setGoalPosition(DXL_ID_1, 500, UNIT_RAW);
-        dxl_2.setGoalPosition(DXL_ID_2, 500, UNIT_RAW);
+        dxl_1.setGoalPosition(DXL_ID_1, 2700, UNIT_RAW);
+        dxl_2.setGoalPosition(DXL_ID_2, 550, UNIT_RAW);
         delay(1000);
         DEBUG_SERIAL.print("M1 = ");
         DEBUG_SERIAL.println(dxl_1.getPresentPosition(DXL_ID_1, UNIT_RAW));

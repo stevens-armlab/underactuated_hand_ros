@@ -77,7 +77,7 @@ def callback(data):
     #Range to normalize data to: [a, b]
     a = 0
     b = 1.57
-    roll_min = 525
+    roll_min = 550
     roll_range = 475
 
     #To scale variable x into range [a, b]: x_scaled = (b-a)((x-min(x))/(max(x)-min(x))+a
@@ -87,8 +87,8 @@ def callback(data):
     pot3 = b*((data.pot3 - pot_mins['pot3'])/(pot_ranges['pot3']))
     pot4 = b*((data.pot4 - pot_mins['pot4'])/(pot_ranges['pot4']))
     pot5 = b*((data.pot5 - pot_mins['pot5'])/(pot_ranges['pot5']))
-    roll = 0
-    #roll = -b*((data.roll-roll_min)/(roll_range))
+    #roll = 0
+    roll = -b*((data.roll-roll_min)/(roll_range))
 
     pot_vals = [pot0, pot1, pot2, pot3, pot4, pot5]
     print("Sensor values:")

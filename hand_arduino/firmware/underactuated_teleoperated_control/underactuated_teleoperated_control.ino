@@ -6,6 +6,9 @@
 #include <std_msgs/Int8.h>
 #include <std_msgs/Bool.h>
 #include <hand_arduino/grasp.h>
+#include <std_msgs/Float32.h>
+#include <hand_arduino/underactuatedHandSensors.h>
+#include <Smoothed.h>   
 
 using namespace ControlTableItem;
 
@@ -24,6 +27,22 @@ float grasp_force = 30;
 float grasp_pos_max = 5500.0;
 float spread_pos_max = 563.0; // parallel
 float spread_pos_min = 269.0; // triangle
+
+//Rviz sim:
+int potPins[] = {14, 15, 16, 17, 18, 19};
+
+Smoothed <int> myPot0; 
+Smoothed <int> myPot1;
+Smoothed <int> myPot2; 
+Smoothed <int> myPot3;
+Smoothed <int> myPot4;
+Smoothed <int> myPot5;
+Smoothed <int> myRoll;
+
+int currentVal = 0;
+int smoothFactor = 12; //default is 10
+float roll = 0;
+
 
 enum grasp_state_enum
 {
@@ -94,6 +113,10 @@ std_msgs::Float64 load_msg;
 std_msgs::Float64 grasp_position_msg;
 std_msgs::Float64 spread_position_msg;
 
+//rviz sim:
+hand_arduino::underactuatedHandSensors pd_msg;
+ros::Publisher potpub("pot_pub", &pd_msg);
+
 ros::Subscriber<std_msgs::Float64> grasp_set_pos_sub("hand/grasp/set_position", &hand_grasp_set_position_cb);
 ros::Subscriber<hand_arduino::grasp> start_grasp_sub("hand/grasp/start_grasp", &hand_grasp_start_grasp_cb);
 ros::Subscriber<std_msgs::Bool> stop_grasp_sub("hand/grasp/stop", &hand_grasp_stop_cb);
@@ -122,6 +145,16 @@ void setup() {
   nh.advertise(grasp_load_pub);
   nh.advertise(grasp_position_pub);
   nh.advertise(spread_position_pub);
+  nh.advertise(potpub);
+
+  //For even smoother, replace SMOOTHED_AVERAGE with SMOOTHED_EXPONENTIAL
+  myPot0.begin(SMOOTHED_EXPONENTIAL, smoothFactor); 
+  myPot1.begin(SMOOTHED_EXPONENTIAL, smoothFactor); 
+  myPot2.begin(SMOOTHED_EXPONENTIAL, smoothFactor); 
+  myPot3.begin(SMOOTHED_EXPONENTIAL, smoothFactor); 
+  myPot4.begin(SMOOTHED_EXPONENTIAL, smoothFactor); 
+  myPot5.begin(SMOOTHED_EXPONENTIAL, smoothFactor); 
+  //myRoll.begin(SMOOTHED_AVERAGE, 100); 
   
   nh.subscribe(grasp_set_pos_sub);
   nh.subscribe(start_grasp_sub);
@@ -171,6 +204,8 @@ void loop() {
   spread_position_msg.data = dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW);
   spread_position_pub.publish(&spread_position_msg);
   
+  readSensors();
+  
   nh.spinOnce();
   delay(10);
 }
@@ -178,6 +213,55 @@ void loop() {
 // ************************************************************************************** //
 // ********************************** Functions ***************************************** //
 // ************************************************************************************** //
+
+void readSensors() {
+  currentVal = analogRead(potPins[0]);
+  myPot0.add(currentVal);
+  Serial.println(myPot0.get());
+
+  currentVal = analogRead(potPins[1]);
+  myPot1.add(currentVal);
+  Serial.println(myPot1.get());
+
+  currentVal = analogRead(potPins[2]);
+  myPot2.add(currentVal);
+  Serial.println(myPot2.get());
+
+  currentVal = analogRead(potPins[3]);
+  myPot3.add(currentVal);
+  Serial.println(myPot3.get());
+  
+  currentVal = analogRead(potPins[4]);
+  myPot4.add(currentVal);
+  Serial.println(myPot4.get());
+
+  currentVal = analogRead(potPins[5]);
+  myPot5.add(currentVal);
+  Serial.println(myPot5.get());
+  
+  
+  //Serial.println("Roll motor position:");
+  roll = dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW);
+  Serial.println(roll);
+  Serial.println();
+  pd_msg.pot0 = myPot0.get();
+  pd_msg.pot1 = myPot1.get();
+  pd_msg.pot2 = myPot2.get();
+  pd_msg.pot3 = myPot3.get();
+  pd_msg.pot4 = myPot4.get();
+  pd_msg.pot5 = myPot5.get();
+  if (roll != 0) {
+    pd_msg.roll = roll;
+  }
+  else {
+  }
+  
+  potpub.publish(&pd_msg);
+  
+  nh.spinOnce();
+
+  //delay(10);
+}
 
 void hand_grasp_set_position_cb(const std_msgs::Float64& data) {
   enable_pos_ctrl();
