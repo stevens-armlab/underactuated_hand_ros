@@ -16,9 +16,9 @@ def joy_cb(data):
     else:
         hand.stop_grasp()
 
-    if data.buttons[2]:
+    if data.buttons[1]:
         hand.start_spread()
-    elif data.buttons[3]:
+    elif data.buttons[2]:
         hand.start_unspread()
     else:
         hand.stop_spread()

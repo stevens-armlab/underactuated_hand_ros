@@ -25,8 +25,8 @@ float grasp_speed = 20;
 float grasp_force_threshold = 90;
 float grasp_force = 30;
 float grasp_pos_max = 5500.0;
-float spread_pos_max = 563.0; // parallel
-float spread_pos_min = 269.0; // triangle
+float spread_pos_max = pos_init_2; // parallel
+float spread_pos_min = 300.0; // triangle
 
 //Rviz sim:
 int potPins[] = {14, 15, 16, 17, 18, 19};
