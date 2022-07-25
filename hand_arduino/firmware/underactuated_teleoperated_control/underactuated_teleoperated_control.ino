@@ -25,8 +25,8 @@ float grasp_speed = 20;
 float grasp_force_threshold = 90;
 float grasp_force = 30;
 float grasp_pos_max = 5500.0;
-float spread_pos_max = pos_init_2; // parallel
-float spread_pos_min = 300.0; // triangle
+float spread_pos_max = 550.0; // parallel
+float spread_pos_min = 200.0; // triangle
 
 //Rviz sim:
 int potPins[] = {14, 15, 16, 17, 18, 19};
@@ -53,8 +53,7 @@ enum grasp_state_enum
 };
 grasp_state_enum grasp_state = not_grasping;
 
-enum spread_state_enum
-{
+enum spread_state_enum {
   spreading,
   unspreading,
   fully_spread,
@@ -102,6 +101,7 @@ void start_unspread_cb(const std_msgs::Bool& data);
 void hand_spread_stop_cb(const std_msgs::Bool& data);
 void spread();
 void unspread();
+void closehand();
 
 void initialization();
 void motor_setup();
@@ -177,7 +177,8 @@ void loop() {
     enable_pos_ctrl();
   }
 
-  if (spread_state != stay)
+
+  if (spread_state != stay && spread_state != fully_spread && spread_state != fully_unspread)
   {
     if (spread_state == spreading)
     {
@@ -186,8 +187,10 @@ void loop() {
     if (spread_state == unspreading)
     {
       unspread();
+     
     }
   }
+  
 
   grasp_state_msg.data = grasp_state;
   grasp_state_pub.publish(&grasp_state_msg);
@@ -331,7 +334,7 @@ void grasp() {
 }
 
 void hand_spread_set_position_cb(const std_msgs::Float64& data) {
-  dxl_2.setGoalPosition(DXL_ID_2, data.data, UNIT_RAW);
+  //dxl_2.setGoalPosition(DXL_ID_2, data.data, UNIT_RAW);
   spread_state = stay;
 }
 
@@ -339,53 +342,29 @@ void start_spread_cb(const std_msgs::Bool& data) {
   spread_state = spreading;
 }
 
-void spread() {
-  if (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) >= spread_pos_max)
-  {
-    dxl_2.setGoalPosition(DXL_ID_2, spread_pos_max);
-//    spread_state = fully_spread;
-    return;
-  }
-  if (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) <= spread_pos_min)
-  {
-    dxl_2.setGoalPosition(DXL_ID_2, spread_pos_min);
-//    spread_state = fully_unspread;
-    return;
-  }
-
-//  if ( (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) < spread_pos_max) && (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) > spread_pos_min) )
-//  {
-    dxl_2.setGoalPosition(DXL_ID_2, dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) + 10, UNIT_RAW);
-    spread_state = spreading;
-    delay(10);
-//  }
-}
-
 void start_unspread_cb(const std_msgs::Bool& data) {
   spread_state = unspreading;
 }
 
-void unspread() {
-  if (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) >= spread_pos_max)
-  {
-    dxl_2.setGoalPosition(DXL_ID_2, spread_pos_max);
-//    spread_state = fully_spread;
-    return;
+void spread() { 
+  if (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) > spread_pos_min) {
+    dxl_2.setGoalPosition(DXL_ID_2, dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) - 20, UNIT_RAW);
   }
-  if (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) <= spread_pos_min)
-  {
-    dxl_2.setGoalPosition(DXL_ID_2, spread_pos_min);
-//    spread_state = fully_unspread;
-    return;
+  else {
+    spread_state = fully_spread;
   }
-
-//  if ( (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) < spread_pos_max) && (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) > spread_pos_min) )
-//  {
-    dxl_2.setGoalPosition(DXL_ID_2, dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) - 10, UNIT_RAW);
-    spread_state = unspreading;
-    delay(10);
-//  }
 }
+
+void unspread() {
+  if (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) < spread_pos_max) {
+    //dxl_2.setGoalPosition(DXL_ID_2, dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) + 20, UNIT_RAW);
+    dxl_2.setGoalPosition(DXL_ID_2, spread_pos_max);
+  }
+  else {
+    spread_state = fully_unspread;
+  }
+}
+
 
 void hand_spread_stop_cb(const std_msgs::Bool& data) {
   if (data.data == true)
