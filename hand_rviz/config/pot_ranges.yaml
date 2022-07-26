@@ -1,4 +1,4 @@
-pot_ranges: {pot0: 173.0, pot1: 186.0, pot2: 163.0, pot3: 176.0, pot4: 164.0, pot5: 184.0}
+pot_ranges: {pot0: 153.0, pot1: 208.0, pot2: 109.0, pot3: 197.0, pot4: 157.0, pot5: 203.0}
 
 rosdistro: 'melodic
 
