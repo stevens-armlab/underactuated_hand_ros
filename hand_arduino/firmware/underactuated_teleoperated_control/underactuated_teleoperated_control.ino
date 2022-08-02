@@ -17,7 +17,7 @@ ros::NodeHandle nh;
 float temp_ave = 0.0;
 float load_pre = 0.0;
 const float pos_init_1 = 2700.0;
-const float pos_init_2 = 550.0;
+const float pos_init_2 = 220.0;
 
 bool pos_ctrl = true;
 
@@ -25,8 +25,8 @@ float grasp_speed = 20;
 float grasp_force_threshold = 90;
 float grasp_force = 30;
 float grasp_pos_max = 5500.0;
-float spread_pos_max = 550.0; // parallel
-float spread_pos_min = 200.0; // triangle
+float spread_pos_max = 220.0; // parallel
+float spread_pos_min = -420.0; // triangle
 
 //Rviz sim:
 int potPins[] = {14, 15, 16, 17, 18, 19};
@@ -75,8 +75,8 @@ const float DXL_PROTOCOL_VERSION_1 = 2.0;
 const float DXL_PROTOCOL_VERSION_2 = 2.0;
 const int32_t BAUD_RATE_MOTOR = 1000000;
 
-Dynamixel2Arduino dxl_1(DXL_SERIAL_1, DXL_DIR_PIN_1);
-Dynamixel2Arduino dxl_2(DXL_SERIAL_2, DXL_DIR_PIN_2);
+Dynamixel2Arduino dxl_1(Serial1, 2);
+Dynamixel2Arduino dxl_2(Serial2, 6);
 // ************************************************************************************** //
 
 // ************************ Filter Settings and Variables ******************************* //
@@ -348,7 +348,8 @@ void start_unspread_cb(const std_msgs::Bool& data) {
 
 void spread() { 
   if (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) > spread_pos_min) {
-    dxl_2.setGoalPosition(DXL_ID_2, dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) - 20, UNIT_RAW);
+    dxl_2.setGoalPosition(DXL_ID_2, dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) - 100, UNIT_RAW);
+    //dxl_2.setGoalPosition(DXL_ID_2, spread_pos_min);
   }
   else {
     spread_state = fully_spread;
@@ -357,8 +358,8 @@ void spread() {
 
 void unspread() {
   if (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) < spread_pos_max) {
-    //dxl_2.setGoalPosition(DXL_ID_2, dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) + 20, UNIT_RAW);
-    dxl_2.setGoalPosition(DXL_ID_2, spread_pos_max);
+    dxl_2.setGoalPosition(DXL_ID_2, dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) + 100, UNIT_RAW);
+    //dxl_2.setGoalPosition(DXL_ID_2, spread_pos_max);
   }
   else {
     spread_state = fully_unspread;

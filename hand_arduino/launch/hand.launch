@@ -3,7 +3,7 @@
 
   <!--   starting the joy_node -->
    <node name="joy_node" pkg="joy" type="joy_node" output="log" respawn="false">
-    <param name="dev" value="/dev/input/js1" />
+    <param name="dev" value="/dev/input/js0" />
    </node>
   <!-- starting the hand/gripper -->
     <node name="hand_serial_com" pkg="rosserial_python" type="serial_node.py">

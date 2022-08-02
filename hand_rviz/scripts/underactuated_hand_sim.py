@@ -77,13 +77,13 @@ def callback(data):
     #Range to normalize data to: [a, b]
     a = 0
     b = 1.57
-    roll_min = 550
-    roll_range = 475
+    roll_min = -420
+    roll_range = 600
 
     #To scale variable x into range [a, b]: x_scaled = (b-a)((x-min(x))/(max(x)-min(x))+a
     pot0 = b*((data.pot0 - pot_mins['pot0'])/(pot_ranges['pot0']))
     pot1 = b*((data.pot1 - pot_mins['pot1'])/(pot_ranges['pot1']))
-    pot2 = b*((data.pot2 - pot_mins['pot2'])/(pot_ranges['pot2']))
+    pot2 = 1.57*((data.pot2 - pot_mins['pot2'])/(pot_ranges['pot2']))
     pot3 = b*((data.pot3 - pot_mins['pot3'])/(pot_ranges['pot3']))
     pot4 = b*((data.pot4 - pot_mins['pot4'])/(pot_ranges['pot4']))
     pot5 = b*((data.pot5 - pot_mins['pot5'])/(pot_ranges['pot5']))
