@@ -110,11 +110,13 @@ void loop() {
         break;
       case '1': // parallel
         dxl_2.setGoalPosition(DXL_ID_2, pos_init_2, UNIT_RAW);
+        DEBUG_SERIAL.println(dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW));
         newData = false;
         delay(100);
         break;
       case '2': // triangle
         dxl_2.setGoalPosition(DXL_ID_2, spread_pos_mid, UNIT_RAW);
+        DEBUG_SERIAL.println(dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW));
         newData = false;
         delay(100);
         break;
