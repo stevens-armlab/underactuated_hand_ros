@@ -120,12 +120,14 @@ void loop() {
         break;
       case 'w': // close plam by a little
         dxl_1.setGoalPosition(DXL_ID_1, dxl_1.getPresentPosition(DXL_ID_1, UNIT_RAW)+50, UNIT_RAW);
+        DEBUG_SERIAL.println(dxl_1.getPresentPosition(DXL_ID_1, UNIT_RAW));
         delay(100);
         newData = false;
         break;
       case 's': // open plam by a little
         enable_pos_ctrl();
         dxl_1.setGoalPosition(DXL_ID_1, dxl_1.getPresentPosition(DXL_ID_1, UNIT_RAW)-50, UNIT_RAW);
+        DEBUG_SERIAL.println(dxl_1.getPresentPosition(DXL_ID_1, UNIT_RAW));
         delay(100);
         newData = false;
         break;

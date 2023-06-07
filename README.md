@@ -15,6 +15,9 @@ Build the necessary Arduino libraries:
 
 ## To enable teleoperation of hand with Logitech Gamepad F710
 Remember to source your catkin workspace for each unique terminal with `source ~/underactuated_ws/devel/setup.bash`
+
+- Make sure joy package is installed by running `sudo apt-get install ros-<your_ros_version>-joy`
+
 1. Upload `underactuated_teleoperated_control.ino` to the Teensy
 2. Plug in usb receiver for gamepad
 3. Run `roslaunch hand_arduino hand.launch` to connect Teensy to rosserial and to start the `joy_node`
@@ -34,7 +37,8 @@ Controls:
 ## To start rviz simulation
 Remember to source your catkin workspace for each unique terminal with `source ~/underactuated_ws/devel/setup.bash`
 
-1. Run `roslaunch hand_rviz display.launch`
+1. Install joint state publisher GUI by running `sudo apt install ros-<your_ros_version>-joint-state-publisher-gui`
+2. Run `roslaunch hand_rviz display.launch`
 - This will open rviz with the URDF of the hand and joint_state_publisher_gui to see how each joint is being actuated
 - The previous launch file for teleoperaton aleady enables rosserial connection, so it is not needed again
 3. Run `rosrun hand_rviz underactuated_hand_sim.py` to start hand simulation script. After confirming the hand is fully opened, rviz should accurately simulate the joint positions of each finger. 
@@ -43,3 +47,4 @@ Remember to source your catkin workspace for each unique terminal with `source ~
 *Tips*:
 -  Make sure you have all the other necessary Arduino libraries installed.
 - Make sure the correct Teensy port is defined in the launch file (can be confirmed from Arduino IDE)
+

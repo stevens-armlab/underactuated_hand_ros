@@ -54,6 +54,8 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
    FILES
    underactuatedHandSensors.msg
+   grasp.msg
+   pos_ctrl_1.msg
  )
 
 ## Generate services in the 'srv' folder

@@ -16,7 +16,7 @@ ros::NodeHandle nh;
 
 float temp_ave = 0.0;
 float load_pre = 0.0;
-const float pos_init_1 = 2700.0;
+const float pos_init_1 = 1150.0;
 const float pos_init_2 = 220.0;
 
 bool pos_ctrl = true;
@@ -24,7 +24,7 @@ bool pos_ctrl = true;
 float grasp_speed = 20;
 float grasp_force_threshold = 90;
 float grasp_force = 30;
-float grasp_pos_max = 5500.0;
+float grasp_pos_max = 3500.0;
 float spread_pos_max = 220.0; // parallel
 float spread_pos_min = -420.0; // triangle
 
