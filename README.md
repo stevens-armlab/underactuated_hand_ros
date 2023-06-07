@@ -39,3 +39,7 @@ Remember to source your catkin workspace for each unique terminal with `source ~
 - The previous launch file for teleoperaton aleady enables rosserial connection, so it is not needed again
 3. Run `rosrun hand_rviz underactuated_hand_sim.py` to start hand simulation script. After confirming the hand is fully opened, rviz should accurately simulate the joint positions of each finger. 
 - This terminal will show the values of the potentiometers and the roll motor that are being sent to rviz.
+
+*Tips*:
+-  Make sure you have all the other necessary Arduino libraries installed.
+- Make sure the correct Teensy port is defined in the launch file (can be confirmed from Arduino IDE)
