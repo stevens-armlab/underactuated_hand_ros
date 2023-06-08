@@ -17,7 +17,7 @@ ros::NodeHandle nh;
 float temp_ave = 0.0;
 float load_pre = 0.0;
 const float pos_init_1 = 1150.0; //grasp motor
-const float pos_init_2 = 0.0; //roll motor
+const float pos_init_2 = 800; //roll motor
 
 bool pos_ctrl = true;
 
@@ -348,6 +348,7 @@ void start_unspread_cb(const std_msgs::Bool& data) {
 
 void spread() { 
   if (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) > spread_pos_min) {
+    dxl_2.setGoalCurrent(DXL_ID_2, 100.0, UNIT_PERCENT);
     dxl_2.setGoalPosition(DXL_ID_2, dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) - 100, UNIT_RAW);
     //dxl_2.setGoalPosition(DXL_ID_2, spread_pos_min);
   }
@@ -358,6 +359,7 @@ void spread() {
 
 void unspread() {
   if (dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) < spread_pos_max) {
+    dxl_2.setGoalCurrent(DXL_ID_2, 100.0, UNIT_PERCENT);
     dxl_2.setGoalPosition(DXL_ID_2, dxl_2.getPresentPosition(DXL_ID_2, UNIT_RAW) + 100, UNIT_RAW);
     //dxl_2.setGoalPosition(DXL_ID_2, spread_pos_max);
   }
@@ -407,7 +409,8 @@ void motor_setup() {
   dxl_1.torqueOn(DXL_ID_1);
 
   dxl_2.torqueOff(DXL_ID_2);
-  dxl_2.setOperatingMode(DXL_ID_2, OP_EXTENDED_POSITION);
+  //dxl_2.setOperatingMode(DXL_ID_2, OP_EXTENDED_POSITION);
+  dxl_2.setOperatingMode(DXL_ID_2, OP_CURRENT_BASED_POSITION);
   dxl_2.torqueOn(DXL_ID_2);
 }
 
