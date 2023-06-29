@@ -13,7 +13,11 @@ Build the necessary Arduino libraries:
 
 *Note:* You must delete `ros_lib` if it already exists or the command will not generate the new libraries
 
-## To enable teleoperation of hand with Logitech Gamepad F710
+## Quickstart: teleoperation and rviz simulation
+1. Run `roslaunch hand_rviz teleop_sim.launch` to enable teleoperation and open rviz
+2. Run `rosrun hand_rviz underactuated_hand_sim.py` to enable live simulation in rviz
+
+## To only enable teleoperation of hand with Logitech Gamepad F710
 Remember to source your catkin workspace for each unique terminal with `source ~/underactuated_ws/devel/setup.bash`
 
 - Make sure joy package is installed by running `sudo apt-get install ros-<your_ros_version>-joy`
@@ -34,7 +38,7 @@ Controls:
 *Note:* if you get an error `IndexError: tuple index out of range`, (or the hand is not responding to the controller) that means ros is recongizing another controller as joy input. See [Configuring and Using a Linux-Supported Joystick with ROS](http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick) to determine the name of the controller. Once you have determined which jsX is the correct one, you can edit it in line 6 of hand.launch:
 - `<param name="dev" value="/dev/input/jsX" />` (replace X with the number you have just identified)
 
-## To start rviz simulation
+## To only start rviz simulation
 Remember to source your catkin workspace for each unique terminal with `source ~/underactuated_ws/devel/setup.bash`
 
 1. Install joint state publisher GUI by running `sudo apt install ros-<your_ros_version>-joint-state-publisher-gui`
