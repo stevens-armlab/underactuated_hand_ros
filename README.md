@@ -44,6 +44,12 @@ Remember to source your catkin workspace for each unique terminal with `source ~
 3. Run `rosrun hand_rviz underactuated_hand_sim.py` to start hand simulation script. After confirming the hand is fully opened, rviz should accurately simulate the joint positions of each finger. 
 - This terminal will show the values of the potentiometers and the roll motor that are being sent to rviz.
 
+## To record and play back rosbag file
+1. Go to bagfiles directory with `cd ~/underactuated_ws/bagfiles/`
+2. Run `rosbag record -O file_name  /pot_pub /joint_states_command /joint_states /joy /force_torque_sensor` to begin recording. All published messages will be recorded. Ctrc^C to stop.
+3. Run `rosbag play file_name` to play back the recording. 
+Note: must stop `hand_teleop.py` and `underactuated_hand_sim.py` before playback or movements will be janky.
+
 *Tips*:
 -  Make sure you have all the other necessary Arduino libraries installed.
 - Make sure the correct Teensy port is defined in the launch file (can be confirmed from Arduino IDE)
