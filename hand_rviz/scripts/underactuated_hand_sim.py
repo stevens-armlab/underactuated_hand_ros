@@ -82,11 +82,11 @@ def callback(data):
 
     #To scale variable x into range [a, b]: x_scaled = (b-a)((x-min(x))/(max(x)-min(x))+a
     pot0 = b*((data.pot0 - pot_mins['pot0'])/(pot_ranges['pot0']))
-    pot1 = b*((data.pot1 - pot_mins['pot1'])/(pot_ranges['pot1']))
-    pot2 = 1.57*((data.pot2 - pot_mins['pot2'])/(pot_ranges['pot2']))
+    pot1 = -b*((data.pot1 - pot_mins['pot1'])/(pot_ranges['pot1']))
+    pot2 = -b*((data.pot2 - pot_mins['pot2'])/(pot_ranges['pot2']))
     pot3 = b*((data.pot3 - pot_mins['pot3'])/(pot_ranges['pot3']))
     pot4 = b*((data.pot4 - pot_mins['pot4'])/(pot_ranges['pot4']))
-    pot5 = b*((data.pot5 - pot_mins['pot5'])/(pot_ranges['pot5']))
+    pot5 = -b*((data.pot5 - pot_mins['pot5'])/(pot_ranges['pot5']))
     roll = -b*((data.roll-roll_min)/(roll_range))
 
     pot_vals = [pot0, pot1, pot2, pot3, pot4, pot5]

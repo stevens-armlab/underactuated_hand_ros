@@ -1,5 +1,4 @@
-#updated 7/17/23, for use on all black prototype
-pot_ranges: {pot0: 172.0, pot1: 175.0, pot2: 167.0, pot3: 198.0, pot4: 182.0, pot5: 176.0}
+pot_ranges: {pot0: 155.0, pot1: 199.0, pot2: 179.0, pot3: 192.0, pot4: 171.0, pot5: 202.0}
 
 rosdistro: 'melodic
 

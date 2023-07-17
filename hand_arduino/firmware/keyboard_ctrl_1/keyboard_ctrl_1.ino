@@ -17,8 +17,8 @@ using namespace ControlTableItem;
 
 float temp_ave = 0.0;
 float load_pre = 0.0;
-const float pos_init_1 = 1154.0;
-const float pos_init_2 = 509.0;
+const float pos_init_1 = -1900.0;
+const float pos_init_2 = 800.0;
 
 bool pos_ctrl = true;
 
@@ -243,11 +243,11 @@ void motor_setup() {
 
   // Turn off torque when configuring items in EEPROM area
   dxl_1.torqueOff(DXL_ID_1);
-  dxl_1.setOperatingMode(DXL_ID_1, OP_POSITION);
+  dxl_1.setOperatingMode(DXL_ID_1, OP_EXTENDED_POSITION);
   dxl_1.torqueOn(DXL_ID_1);
 
   dxl_2.torqueOff(DXL_ID_2);
-  dxl_2.setOperatingMode(DXL_ID_2, OP_POSITION);
+  dxl_2.setOperatingMode(DXL_ID_2, OP_EXTENDED_POSITION);
   dxl_2.torqueOn(DXL_ID_2);
 }
 

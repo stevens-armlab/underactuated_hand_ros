@@ -11,8 +11,8 @@
 const uint8_t DXL_DIR_PIN_1 = 2; // DYNAMIXEL Shield DIR PIN for the first motor
 const uint8_t DXL_DIR_PIN_2 = 6; // DYNAMIXEL Shield DIR PIN for the second motor
 
-const uint8_t DXL_ID_1 = 11;
-const uint8_t DXL_ID_2 = 1;
+const uint8_t DXL_ID_1 = 1;
+const uint8_t DXL_ID_2 = 2;
 const float DXL_PROTOCOL_VERSION_1 = 2.0;
 const float DXL_PROTOCOL_VERSION_2 = 2.0;
 const int32_t BAUD_RATE_MOTOR = 1000000;
@@ -25,8 +25,8 @@ using namespace ControlTableItem;
 
 float temp_ave = 0.0;
 float load_pre = 0.0;
-const float pos_init_1 = 2200.0;
-const float pos_init_2 = 450.0;
+const float pos_init_1 = 1150.0;
+const float pos_init_2 = 800.0;
 
 bool pos_ctrl = true;
 

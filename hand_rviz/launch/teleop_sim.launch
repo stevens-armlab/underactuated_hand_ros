@@ -34,13 +34,13 @@
     name="rviz"
     pkg="rviz"
     type="rviz"
-    args="-d $(find hand_rviz)/rviz/urdf_config.rviz" />
+    args="-d $(find hand_rviz)/rviz/teleop_ft_config.rviz" />
   <rosparam file="$(find hand_rviz)/config/pot_ranges.yaml" />
   <node
     name="pot_mins"
     pkg="hand_rviz"
     type="server.py" />
-    
+
   <!-- Run onrobot_hex_publisher_wrench.py script -->
   <node name="force_torque" pkg="onrobot_hex_udp_tcp" type="onrobot_hex_publisher_wrench.py">
   </node>
