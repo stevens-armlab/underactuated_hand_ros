@@ -77,7 +77,7 @@ def callback(data):
     #Range to normalize data to: [a, b]
     a = 0
     b = 1.57
-    roll_min = 900 #This is the zero position
+    roll_min = 1000 #This is the zero position
     roll_range = 900
 
     #To scale variable x into range [a, b]: x_scaled = (b-a)((x-min(x))/(max(x)-min(x))+a
