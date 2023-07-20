@@ -18,9 +18,9 @@ using namespace ControlTableItem;
 float temp_ave = 0.0;
 float load_pre = 0.0;
 const float pos_init_1 = 2600.0;
-const float pos_init_2 = 900.0;
+const float pos_init_2 = 1000.0;
 
-bool pos_ctrl = true;
+bool pos_ctrl = true;w
 
 float grasp_speed = 20;
 float grasp_force_threshold = 90;
