@@ -16,7 +16,7 @@ ros::NodeHandle nh;
 
 float temp_ave = 0.0;
 float load_pre = 0.0;
-const float pos_init_1 = 2600; //grasp motor 
+const float pos_init_1 = -400; //grasp motor 
 const float pos_init_2 = 1000; //roll motor
 
 bool pos_ctrl = true;
